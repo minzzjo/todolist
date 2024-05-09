@@ -1,0 +1,120 @@
+.todo__container {
+	background-color: lightblue;
+}
+
+/* Header */
+.header__container {
+	border: 2px solid lightcoral;
+	padding: 0.5rem 0.7rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__mode__btn {
+	color: orangered;
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.header__nav__btn {
+	color: orangered;
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 300ms ease-in;
+}
+
+.header__nav__btn:hover {
+	color: cornflowerblue;
+	transform: scale(1.1);
+}
+
+/* Main */
+
+.todo__lists {
+	border: 2px solid cornflowerblue;
+	padding: 1rem;
+}
+
+.todo__list__box {
+	width: 30rem;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.todo__list {
+	width: 85%;
+	gap: 25px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.todo__list__checkbtn {
+	width: 1.7rem;
+	height: 1.7rem;
+	margin-top: 6px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.todo__list__item {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.todo__delete__btn {
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	border-radius: 100%;
+	color: white;
+	background-color: gray;
+	cursor: pointer;
+}
+
+/* Footer */
+.todo__add {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.todo__add__input {
+	width: 27rem;
+	height: 2rem;
+	border: none;
+	border-radius: 5px 0 0 5px;
+	padding: 0 10px;
+}
+
+.todo__add__btn {
+	width: 5rem;
+	height: 2rem;
+	border: none;
+	border-radius: 0 5px 5px 0;
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: white;
+	background-color: orange;
+	cursor: pointer;
+	transition: all 300ms ease-in;
+}
+
+.todo__add__btn:hover {
+	color: orange;
+	background-color: midnightblue;
+}
