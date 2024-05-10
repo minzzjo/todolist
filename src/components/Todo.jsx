@@ -7,6 +7,7 @@ import { FaTrashCan } from "react-icons/fa6";
 
 export default function Todo() {
 	let id = nanoid();
+	// Mode
 	const [mode, setMode] = useState(false);
 	const onClickMode = () => {
 		console.log("mode switch!");
@@ -17,24 +18,14 @@ export default function Todo() {
 		}
 	};
 
-	const [done, setDone] = useState(false);
-	const onClickDone = (e) => {
-		const targetId = e.target.name;
-		todoList.map((t) => {
-			if (t.id === targetId) {
-				setDone(!t.done);
-			}
-		});
-	};
-
 	const [todoList, setTodoList] = useState([]);
 	const [todo, setTodo] = useState({ id: "", todo: "" });
-
+	// create
 	const onChangeTodo = (e) => {
 		const { name, value, done } = e.target;
 		setTodo({ ...todo, id, [name]: value, done });
 	};
-
+	// read
 	const onClickAdd = (e) => {
 		e.preventDefault();
 		console.log(todo);
@@ -42,11 +33,23 @@ export default function Todo() {
 		console.log(todoList);
 		setTodo({ todo: "" });
 	};
-
+	// delete
 	const onClickDelete = (e) => {
 		const targetId = e.target.name;
 		const result = todoList.filter((todo) => todo.id !== targetId);
 		setTodoList(result);
+	};
+	// check
+	const onClickDone = (e) => {
+		const { name, value } = e.target;
+		console.log(name, value);
+		todoList.map((todo) => {
+			if (todo.id === name) {
+				todo.done = !value;
+			}
+			return todo;
+		});
+		setTodo({ ...todo, todo });
 	};
 
 	return (
@@ -76,9 +79,9 @@ export default function Todo() {
 				<ul>
 					{todoList.map((t) => (
 						<div key={t.id} className='todo__list'>
-							<button onClick={onClickDone} name={t.id} value={t.todo} done={t.done} className='todo__list__checkbtn'>
-								{/* {done ? <ImCheckboxChecked /> : <ImCheckboxUnchecked />} */}
-								{done ? "✅" : "❎"}
+							<button onClick={onClickDone} name={t.id} value={t.done} className='todo__list__checkbtn'>
+								{/* {todo.done ? <ImCheckboxChecked /> : <ImCheckboxUnchecked />} */}
+								{t.done ? "✅" : "❎"}
 							</button>
 							<li>{t.todo}</li>
 							<button onClick={onClickDelete} name={t.id} value={t.todo} className='todo__delete__btn'>
