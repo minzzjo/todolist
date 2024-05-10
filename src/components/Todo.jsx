@@ -52,6 +52,19 @@ export default function Todo() {
 		setTodo({ ...todo, todo });
 	};
 
+	// navBtn
+	const onClickAll = (e) => {
+		console.log(e.target.value);
+	};
+
+	const onClickActive = (e) => {
+		console.log(e.target.value);
+	};
+
+	const onClickComplete = (e) => {
+		console.log(e.target.value);
+	};
+
 	return (
 		<div className='todo__container'>
 			{/* Header - State */}
@@ -62,13 +75,13 @@ export default function Todo() {
 					</button>
 				</div>
 				<nav className='header__nav'>
-					<button className='header__nav__btn' id='all'>
+					<button onClick={onClickAll} className='header__nav__btn' id='all' value='all'>
 						All
 					</button>
-					<button className='header__nav__btn' id='active'>
+					<button onClick={onClickActive} className='header__nav__btn' id='active' value='active'>
 						Active
 					</button>
-					<button className='header__nav__btn' id='completed'>
+					<button onClick={onClickComplete} className='header__nav__btn' id='completed' value='completed'>
 						Completed
 					</button>
 				</nav>
