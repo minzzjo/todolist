@@ -4,6 +4,9 @@ import { nanoid } from "nanoid";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { FaTrashCan } from "react-icons/fa6";
+import Header from "./Header";
+import Footer from "./Footer";
+import Lists from "./Lists";
 
 export default function Todo() {
 	let id = nanoid();
@@ -20,9 +23,11 @@ export default function Todo() {
 
 	const [todoList, setTodoList] = useState([]);
 	const [todo, setTodo] = useState({ id: "", todo: "" });
+	const [done, setDone] = useState(false);
 	// create
 	const onChangeTodo = (e) => {
 		const { name, value, done } = e.target;
+		console.log(e.target);
 		setTodo({ ...todo, id, [name]: value, done });
 	};
 	// read
@@ -67,52 +72,11 @@ export default function Todo() {
 
 	return (
 		<div className='todo__container'>
-			{/* Header - State */}
-			<header className='header__container'>
-				<div className='header__mode'>
-					<button className='header__mode__btn' onClick={onClickMode}>
-						{mode ? <MdDarkMode /> : <MdLightMode />}
-					</button>
-				</div>
-				<nav className='header__nav'>
-					<button onClick={onClickAll} className='header__nav__btn' id='all' value='all'>
-						All
-					</button>
-					<button onClick={onClickActive} className='header__nav__btn' id='active' value='active'>
-						Active
-					</button>
-					<button onClick={onClickComplete} className='header__nav__btn' id='completed' value='completed'>
-						Completed
-					</button>
-				</nav>
-			</header>
+			<Header mode={mode} onClickMode={onClickMode} todoList={todoList} onClickAll={onClickAll} onClickActive={onClickActive} onClickComplete={onClickComplete} />
 
-			{/* Main - Lists */}
-			<section className='todo__lists'>
-				<ul>
-					{todoList.map((t) => (
-						<div key={t.id} className='todo__list'>
-							<button onClick={onClickDone} name={t.id} value={t.done} className='todo__list__checkbtn'>
-								{/* {todo.done ? <ImCheckboxChecked /> : <ImCheckboxUnchecked />} */}
-								{t.done ? "✅" : "❎"}
-							</button>
-							<li>{t.todo}</li>
-							<button onClick={onClickDelete} name={t.id} value={t.todo} className='todo__delete__btn'>
-								{/* <FaTrashCan /> */}
-								del
-							</button>
-						</div>
-					))}
-				</ul>
-			</section>
+			<Lists todoList={todoList} onClickDone={onClickDone} onClickDelete={onClickDelete} />
 
-			{/* Footer - Add */}
-			<footer className='todo__add'>
-				<form className='todo__add__form' onSubmit={onClickAdd}>
-					<input type='text' className='todo__add__input' onChange={onChangeTodo} name='todo' value={todo.todo} id='todo' placeholder='Add Todo' />
-					<button className='todo__add__btn'>Add</button>
-				</form>
-			</footer>
+			<Footer todo={todo} onClickAdd={onClickAdd} onChangeTodo={onChangeTodo} />
 		</div>
 	);
 }
