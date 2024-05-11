@@ -73,9 +73,7 @@ export default function Todo() {
 	return (
 		<div className='todo__container'>
 			<Header mode={mode} onClickMode={onClickMode} todoList={todoList} onClickAll={onClickAll} onClickActive={onClickActive} onClickComplete={onClickComplete} />
-
 			<Lists todoList={todoList} onClickDone={onClickDone} onClickDelete={onClickDelete} />
-
 			<Footer todo={todo} onClickAdd={onClickAdd} onChangeTodo={onChangeTodo} />
 		</div>
 	);

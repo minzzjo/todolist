@@ -1,4 +1,5 @@
 import React from "react";
+import "../style/Todo.css";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 export default function Header({ mode, onClickMode, todoList, onClickAll, onClickActive, onClickComplete }) {

@@ -1,4 +1,5 @@
 import React from "react";
+import "../style/Todo.css";
 
 export default function Footer({ todo, onClickAdd, onChangeTodo }) {
 	return (
