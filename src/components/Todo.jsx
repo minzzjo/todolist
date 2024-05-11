@@ -9,7 +9,6 @@ import Footer from "./Footer";
 import Lists from "./Lists";
 
 export default function Todo() {
-	let id = nanoid();
 	// Mode
 	const [mode, setMode] = useState(false);
 	const onClickMode = () => {
@@ -21,13 +20,14 @@ export default function Todo() {
 		}
 	};
 
+	let id = nanoid();
 	const [todoList, setTodoList] = useState([]);
 	const [todo, setTodo] = useState({ id: "", todo: "" });
-	const [done, setDone] = useState(false);
+	let { done } = false;
+
 	// create
 	const onChangeTodo = (e) => {
-		const { name, value, done } = e.target;
-		console.log(e.target);
+		const { name, value } = e.target;
 		setTodo({ ...todo, id, [name]: value, done });
 	};
 	// read
